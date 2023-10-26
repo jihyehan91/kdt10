@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>실습</title>
+  </head>
+  <style>
+    /* 1번 */
+    /*h1:hover {
+      color: red;
+    }
+    a:active {
+      background-color: blue;
+    }
+    input:focus {
+      background-color: orange;
+    }*/
+
+    /* 2번 */
+    /*.stripes div:nth-child(2n + 1) {
+      color: white;
+      background-color: navy;
+    }
+    .stripes div:nth-child(2n) {
+      background-color: yellow;
+    }*/
+
+    /* 3번 */
+    /*.box::before {
+      content: '택시';
+    }
+    .box::after {
+      content: '빨리';
+    }*/
+
+    /* 4번 */
+    [disabled] {
+      background-color: red;
+    }
+    [placeholder='이름'] {
+      background-color: orange;
+    }
+    *t:not([placeholder]) {
+      background-color: blue;
+    }
+  </style>
+  <body>
+    <!-- 1번 -->
+    <!-- <h1>hover 실습</h1>
+    <a href="https://naver.com">Naver</a>
+    <input type="text" /> -->
+
+    <!-- 2번 -->
+    <!-- <div class="stripes">
+      <div>navy</div>
+      <div>yellow</div>
+      <div>navy</div>
+      <div>yellow</div>
+      <div>navy</div>
+      <div>yellow</div>
+      <div>navy</div>
+      <div>yellow</div>
+      <div>navy</div>
+      <div>yellow</div>
+    </div> -->
+
+    <!-- 3번 -->
+    <!-- <div class="box">여기요!</div> -->
+
+    <!-- 4번 -->
+    <input type="text" placeholder="이름" />
+    <input type="password" value="pw" />
+    <input type="text" value="000-0000-0000" />
+    <input type="text" placeholder="핸드폰" />
+    <input type="text" placeholder="주민번호" disabled />
+  </body>
+</html>
