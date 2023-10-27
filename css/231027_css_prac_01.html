@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      /* 실습 calc 및 linehegiht*/
+      .one {
+        width: 10vw;
+        height: 10vw; /*높이라고 vh를 쓰는 것이 아니었다...*/
+        background-color: pink;
+        text-align: center;
+        line-height: 10vw; /*div크기와 1:1 비율로 주면 박스 안 글자가 가로, 세로 중앙 정렬이 된다.*/
+        margin: calc((100vh - 10vw) / 2) auto; /*수평 가운데 정렬*/
+      }
+      /* 잘못된 나의 코드 ㅠㅠ 
+        background-color: blue;
+        color: white;
+        width: 10vw;
+        height: 20vh;
+        margin: auto;
+        vertical-align: middle;
+        line-height: 20vh;
+        text-align: center; */
+
+      /* 테두리 그리기 */
+      /*.border {
+        margin: 0 0 100px 100px;
+        width: 300px;
+        height: 300px;
+        background-color: rgb(247, 197, 197);
+        border-width: 10px 20px 10px 15px;
+        border-style: dashed dotted double groove;
+        border-color: blanchedalmond red yellowgreen blue;
+      }
+
+      .box-sizing {
+        width: 100px;
+        height: 100px;
+        padding: 20px;
+        border: 15px solid red;
+        background-color: orange;
+      }*/
+
+      /* 요소 사라지게 하기 */
+      .visibility:hover {
+        /*display: none;*/
+        /*visibility: hidden;*/
+        opacity: 0; /*속성이 남아있다. 위 2개와 다른점*/
+      }
+    </style>
+  </head>
+  <body style="margin: 0px">
+    <!-- <div class="one">KDT</div>
+    <div class="border"></div>
+
+    <hr /> -->
+
+    <!-- box-sizing -->
+    <!-- <div class="box-sizing" style="box-sizing: content-box">content-box</div>
+    <div class="box-sizing" style="box-sizing: border-box">border-box</div> -->
+
+    <!-- visibility 요소 사라지게 하기 -->
+    <div
+      class="visibility"
+      style="width: 200px; height: 200px; background-color: blue"
+    ></div>
+  </body>
+</html>
