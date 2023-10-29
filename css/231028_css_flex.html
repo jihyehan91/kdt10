@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>flex</title>
+    <style>
+      .container {
+        background-color: green;
+        width: 500px;
+        height: 300px;
+        display: flex;
+        /* flex-direction */
+        /*flex-direction: row;*/
+        /*flex-direction: row-reverse;
+        flex-direction: column;
+        flex-direction: column-reverse;*/
+
+        /* flex-wrap */
+        flex-wrap: wrap;
+        /*flex-wrap: nowrap;/*
+
+        /* justify-content: 주 축에 대한 정렬 */
+        /*justify-content: flex-start;*/ /* default */
+        /*justify-content: flex-end;
+        justify-content: center;
+        justify-content: space-between;
+        justify-content: space-around;
+        justify-content: space-evenly;*/
+      }
+      div {
+        width: 100px;
+        height: 100px;
+      }
+      .item1 {
+        background-color: red;
+      }
+      .item2 {
+        background-color: yellow;
+      }
+
+      /* aline-content */
+      .item3 {
+        /*width: 100px;
+        height: 20px;*/
+        width: 100px;
+        height: 100px;
+        background-color: pink;
+      }
+      .item4 {
+        /*width: 200px;
+        height: 20px;*/
+        width: 100px;
+        height: 100px;
+        background-color: aqua;
+      }
+      .item5 {
+        /*width: 300px;
+        height: 40px;*/
+        width: 100px;
+        height: 100px;
+        background-color: coral;
+      }
+
+      .align-items {
+        /*align-items: flex-start;*/
+        /* align-items: flex-end; */
+        /* 부모가 끝나는 위치를 기준으로 */
+        /* align-items: center; */
+        /* 세로 교차축 기준 */
+
+        /* align-content */
+        align-content: flex-start;
+        align-content: flex-end;
+        align-content: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="item1">1</div>
+      <div class="item2">2</div>
+      <div class="item1">3</div>
+      <!-- <div class="item2">4</div>
+      <div class="item1">5</div>
+      <div class="item2">6</div> -->
+    </div>
+    <hr />
+    <div class="container align-items">
+      <div class="item3"></div>
+      <div class="item4"></div>
+      <div class="item5"></div>
+      <div class="item3"></div>
+      <div class="item4"></div>
+      <div class="item5"></div>
+    </div>
+  </body>
+</html>

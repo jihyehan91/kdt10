@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>실습 flex-direction</title>
+    <style>
+      /* 실습1 */
+      .container {
+        width: 500px;
+        height: 500px;
+        background-color: salmon;
+        display: flex;
+        margin-bottom: 50px;
+      }
+      .container.two {
+        flex-direction: row-reverse;
+      }
+      .container.three {
+        flex-direction: column;
+      }
+      .container > div {
+        width: 100px;
+        height: 100px;
+      }
+
+      /* 실습2 */
+      .container2 {
+        width: 500px;
+        height: 500px;
+        background-color:lightgoldenrodyellow;
+        display: flex;
+        flex-wrap: wrap;
+      }
+      .container2 > div {
+        width: 100px;
+        height: 100px;
+      }
+      .one {
+        background-color: aquamarine;
+      }
+      .two {
+        background-color: sandybrown;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 실습1 -->
+    <!-- <div class="container one">
+      <div class="item1" style="background-color: lightblue">item1</div>
+      <div class="item2" style="background-color: lightcyan">item2</div>
+      <div class="item3" style="background-color: bisque">item3</div>
+    </div>
+    <div class="container two">
+      <div class="item1" style="background-color: lightblue">item1</div>
+      <div class="item2" style="background-color: lightcyan">item2</div>
+      <div class="item3" style="background-color: bisque">item3</div>
+    </div>
+    <div class="container three">
+      <div class="item1" style="background-color: lightblue">item1</div>
+      <div class="item2" style="background-color: lightcyan">item2</div>
+      <div class="item3" style="background-color: bisque">item3</div> -->
+      
+      <!-- 실습2 -->
+      <div class="container2">
+        <div class="one"></div>
+        <div class="two"></div>
+        <div class="one"></div>
+        <div class="two"></div>
+        <div class="one"></div>
+        <div class="two"></div>
+        <div class="one"></div>
+        <div class="two"></div>
+      </div>
+    </div>
+  </body>
+</html>

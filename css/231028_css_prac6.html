@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>flex-wrap</title>
+    <style>
+      .container {
+        width: 500px;
+        height: 500px;
+        background-color: lightsteelblue;
+        display: flex;
+        flex-wrap: nowrap;
+        align-content: stretch;
+      }
+      .container > div {
+        width: 100px;
+        height: 100px;
+      }
+      .one {
+        background-color: crimson;
+      }
+      .two {
+        background-color: green;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="one"></div>
+      <div class="two"></div>
+      <div class="one"></div>
+      <div class="two"></div>
+      <div class="one"></div>
+      <div class="two"></div>
+      <div class="one"></div>
+      <div class="two"></div>
+    </div>
+  </body>
+</html>
