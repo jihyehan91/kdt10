@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>실습</title>
+    <style>
+      /* 실습1 transform */
+      img {
+        width: 350px;
+        transform: skew(0deg, 20deg);
+        position: absolute;
+      }
+      #img1 {
+        top: 200px;
+        left: 100px;
+        z-index: 10;
+      }
+      #img2 {
+        top: 150px;
+        left: 350px;
+        z-index: 5;
+      }
+      #img3 {
+        top: 100px;
+        left: 600px;
+      }
+      #img4:hover {
+        transform: scale(2) skew(0deg, 20deg);
+        /* 여러 개의 속성을 쓰고 싶으면 연달아 쓰면 된다. */
+      }
+
+      /* 실습2 transition */
+      .transition {
+        width: 100px;
+        height: 100px;
+        background-color: black;
+        color: white;
+        overflow: auto;
+        transition: all 1s linear 0.5s;
+        /* transition-property: width, height;
+          전부는 all 또는 여러 개는 콤마로 구분해서 써도 된다.
+        */
+      }
+      .transition:hover {
+        width: 300px;
+        height: 300px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 실습1 transform -->
+    <!-- <img src="\img\picture1.jpg" id="img1" />
+    <img src="\img\picture2.jpeg" id="img2" />
+    <img src="\img\picture3.jpg" id="img3" />
+    <img src="\img\picture3.jpg" id="img4" /> -->
+
+    <!-- 실습2 transition -->
+    <div class="transition">
+      안녕하세요! 코딩온 실습을 시작합니다. 이번 실습은 CSS의 Transition을
+      이용한 실습으로 해당 박스에 마우스를 올려 놓으면 확대가 됩니다.
+    </div>
+  </body>
+</html>

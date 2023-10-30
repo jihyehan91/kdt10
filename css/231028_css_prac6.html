@@ -9,9 +9,21 @@
         width: 500px;
         height: 500px;
         background-color: lightsteelblue;
+      }
+      .container.row {
         display: flex;
-        flex-wrap: nowrap;
-        align-content: stretch;
+        align-items: center;
+      }
+      .container.column {
+        flex-direction: column;
+        display: flex;
+        align-items: center;
+      }
+      .container.two-row {
+        flex-direction: row;
+        flex-wrap: wrap;
+        display: flex;
+        align-content: center;
       }
       .container > div {
         width: 100px;
@@ -26,7 +38,40 @@
     </style>
   </head>
   <body>
-    <div class="container">
+    <div class="container row">
+      <div class="one"></div>
+      <div class="two"></div>
+      <div class="one"></div>
+      <div class="two"></div>
+      <div class="one"></div>
+      <div class="two"></div>
+      <div class="one"></div>
+      <div class="two"></div>
+    </div>
+    <br /><br />
+    <div class="container column">
+      <div class="one"></div>
+      <div class="two"></div>
+      <div class="one"></div>
+      <div class="two"></div>
+      <div class="one"></div>
+      <div class="two"></div>
+      <div class="one"></div>
+      <div class="two"></div>
+    </div>
+    <br /><br />
+    <div class="container two-row">
+      <div class="one"></div>
+      <div class="two"></div>
+      <div class="one"></div>
+      <div class="two"></div>
+      <div class="one"></div>
+      <div class="two"></div>
+      <div class="one"></div>
+      <div class="two"></div>
+    </div>
+    <br /><br />
+    <div class="container two-column">
       <div class="one"></div>
       <div class="two"></div>
       <div class="one"></div>
