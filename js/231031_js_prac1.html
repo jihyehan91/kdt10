@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>practice variable</title>
+    <script>
+      let color = [
+        'red',
+        'orange',
+        'yellow',
+        'green',
+        'blue',
+        'navy',
+        'violet',
+      ];
+
+      console.log('index 2: ', color[2]);
+      color.push('black');
+      console.log('push 후: ', color);
+      console.log('black index no.: ', color.indexOf('black'));
+      console.log('reverse 후: ', color.reverse());
+
+      let selfIntroduce = {
+        name: '한지',
+        color: 'black',
+        animal: 'cat',
+        status: 'hungry',
+      };
+      console.log(selfIntroduce);
+      console.log(selfIntroduce.animal);
+      console.log(selfIntroduce.status);
+
+      // typeof 실습
+      console.log(`${typeof 1} isn't ${typeof '1'} data type.`);
+      console.log(
+        `Typeof를 boolean이나 null에 사용하면, ${typeof true}이나 ${null} 결과를 얻을 수 있다.`
+      );
+
+      // 형변환 실습
+      let mathScore = prompt('수학 점수를 입력해주세요.');
+      let engScore = prompt('영어 점수를 입력해주세요.');
+
+      let avg = (Number(mathScore) + Number(engScore)) / 2;
+      console.log(avg);
+    </script>
+  </head>
+  <body></body>
+</html>

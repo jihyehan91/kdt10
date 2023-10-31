@@ -5,12 +5,69 @@
 body {
   width: 100%;
   background-color: #b1e1e2;
-  animation-name: backchange;
-  animation-duration: 2s;
-  animation-iteration-count: 3;
+  animation: sky 10s linear infinite;
 }
 
-@keyframes backchange {
+section {
+  width: 700px;
+  height: 450px;
+  position: absolute;
+  /* 가운데 정렬(absolute): top, left 각각 50%를 주면 정중앙에 배치하는 것의 왼쪽 꼭지점에 온다 */
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -40%);
+}
+
+section .sky {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  /* sky 안 요소를 제어하기 위해 */
+}
+
+section .sky .sun {
+  width: 180px;
+  position: absolute;
+  top: -160px;
+  left: 0px;
+  margin-left: -90px;
+  animation: sun 10s linear infinite;
+}
+
+section .sky .moon {
+  width: 160px;
+  position: absolute;
+  top: -160px;
+  left: 0px;
+  margin-left: -90px;
+  animation: moon 10s linear infinite;
+}
+
+section .sky .cloud_1 {
+  width: 160px;
+  position: absolute;
+  top: -30px;
+  left: 0%;
+  animation: cloud_1 10s linear infinite;
+}
+
+section .sky .cloud_2 {
+  width: 90px;
+  position: absolute;
+  top: 20px;
+  left: 12%;
+  animation: cloud_2 5s linear infinite;
+}
+
+section .city .city_img {
+  width: 100%;
+  position: absolute;
+  bottom: 0px;
+}
+
+/* ANIMATION */
+
+@keyframes sky {
   0% {
     background-color: #b1e1e2;
   }
@@ -25,69 +82,99 @@ body {
   }
   100% {
     background-color: #b1e1e2;
+    /* 0% = 100% 동일해야 처음처럼 다시 돌아옴(반복) */
   }
 }
 
-section {
-  width: 700px;
-  height: 450px;
-  margin: auto;
-}
-
-section .sky {
-  width: 100%;
-  height: 100%;
-}
-
-section .sky .sun {
-  width: 180px;
-  animation-name: spinsun;
-  animation-duration: 10s;
-  position: absolute;
-}
-@keyframes spinsun {
-  from {
-    transform: rotate(360deg);
+@keyframes sun {
+  0% {
+    opacity: 0;
+    transform: rotate(-90deg);
+  }
+  25% {
     opacity: 1;
+    transform: rotate(0deg);
   }
-  t0 {
-    transform: rotate(360deg);
+  50% {
     opacity: 0;
-    backface-visibility: hidden;
+    transform: rotate(90deg);
   }
-}
-
-section .sky .moon {
-  width: 160px;
-  animation-name: moonspin;
-  animation-duration: 10s;
-  position: absolute;
-}
-@keyframes moonspin {
+  75% {
+    opacity: 0;
+  }
   100% {
-    transform: rotate(360deg);
     opacity: 0;
-    backface-visibility: hidden;
   }
 }
 
-section .sky .cloud_1 {
-  width: 160px;
-  position: absolute;
-  top: 150px;
+@keyframes moon {
+  0% {
+    opacity: 0;
+  }
+  25% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0;
+    transform: rotate(90deg);
+  }
+  75% {
+    opacity: 1;
+    transform: rotate(0deg);
+  }
+  100% {
+    opacity: 0;
+    transform: rotate(-90deg);
+  }
 }
 
-section .sky .cloud_2 {
-  width: 90px;
-  position: absolute;
-  top: 200px;
+@keyframes cloud_1 {
+  0% {
+    opacity: 0;
+    /* 안 보였다 나타남 */
+    left: 0%;
+  }
+  25% {
+    opacity: 1;
+    left: 50%;
+  }
+  50% {
+    opacity: 0;
+    left: 100%;
+  }
+  75% {
+    opacity: 1;
+    left: 50%;
+    /* 갔다가 돌아오기 위함 25% = 75% */
+  }
+  100% {
+    opacity: 0;
+    left: 0;
+  }
 }
 
-section .city .city_img {
-  width: 100%;
+@keyframes cloud_2 {
+  0% {
+    opacity: 0;
+    left: 15%;
+  }
+  25% {
+    opacity: 1;
+    left: 65%;
+  }
+  50% {
+    opacity: 0;
+    left: 115%;
+  }
+  75% {
+    opacity: 1;
+    left: 65%;
+  }
+  100% {
+    opacity: 0;
+    left: 15%;
+  }
 }
-
-/* ANIMATION */
 /* 
   TODO:.5종류의 애니메이션이 필요함
   - sky: 배경색 변경 애니메이션
