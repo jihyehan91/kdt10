@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>실습 function</title>
+    <script>
+      // 실습1. 함수 만들기
+      function multifly(num1, num2) {
+        return Number(num1) * Number(num2);
+      }
+      console.log(multifly(3, 50)); // 150
+      console.log(multifly('2', 2));
+
+      // 실습2. 함수 만들기
+      function square(num1) {
+        let num = Number(num1);
+        console.log(num * num);
+        console.log(Number(num1) * Number(num1));
+      }
+      square(11); // 121
+
+      // 실습3. onclick & 함수만들기
+      /* prompt는 문자를 받는다 
+      > 사칙연산하려면 숫자로 형변환이 필요! Number()
+      */
+
+      /* 나의 풀이
+      function add() {
+        let num1 = prompt('숫자를 입력해주세요.');
+        let num2 = prompt('숫자를 하나 더 입력해주세요');
+        alert(Number(num1) + Number(num2));
+      }
+      function minus() {
+        let num1 = prompt('숫자를 입력해주세요.');
+        let num2 = prompt('숫자를 하나 더 입력해주세요');
+        alert(Number(num1) - Number(num2));
+      }
+      function muliplication() {
+        let num1 = prompt('숫자를 입력해주세요.');
+        let num2 = prompt('숫자를 하나 더 입력해주세요');
+        alert(Number(num1) * Number(num2));
+      }
+      function division() {
+        let num1 = prompt('숫자를 입력해주세요.');
+        let num2 = prompt('숫자를 하나 더 입력해주세요');
+        alert(Number(num1) / Number(num2));
+      }
+      */
+
+      // 3번 해설
+      // 전역변수랑 지역변수
+      // 전역변수 > 지역변수 범위가 큰 것
+      // but 지역변수가 좀 더 특별한 것
+      let num1 = prompt('첫번째 숫자');
+      num1 = Number(num1);
+      let num2 = prompt('두번째 숫자');
+      num2 = Number(num2);
+
+      function add() {
+        let result = num1 + num2;
+        alert(result);
+      }
+      function sub() {
+        let result = num1 - num2;
+        alert(result);
+      }
+      function mul() {
+        let result = num1 * num2;
+        alert(result);
+      }
+      function div() {
+        let result = num1 / num2;
+        alert(result);
+      }
+    </script>
+  </head>
+  <body>
+    <button onclick="add()">더하기</button>
+    <button onclick="sub()">빼기</button>
+    <button onclick="mul()">곱하기</button>
+    <button onclick="div()">나누기</button>
+  </body>
+</html>
