@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>실습1. 간단 계산기 만들기</title>
+  </head>
+  <body>
+    값1: <input type="text" id="value1" /> <br />
+    값2: <input type="text" id="value2" /> <br />연산자:
+    <input type="text" id="operator" /> <br />결과:
+    <input type="text" id="result" />
+    <br /><br />
+    <button onclick="cal()">계산하기</button>
+    <button onclick="reset()">초기화</button>
+
+    <script>
+      function cal() {
+        // 값1, 값2, 연산자에 대한 값을 읽어와야 함
+        // 각각의 요소들을 1) 선택하고 2) 값을 가져오기
+
+        // 1) 요소 선택
+        let value1 = document.getElementById('value1');
+        let value2 = document.getElementById('value2');
+        let operator = document.getElementById('operator');
+        let result = document.getElementById('result');
+
+        // 2) 값 가져오기
+        let v1Val = value1.value;
+        let v2Val = value2.value;
+        let opVal = operator.value;
+
+        console.log(v1Val, v2Val, op);
+        console.log(typeof v1Val);
+
+        // 숫자로 형변환
+        v1Val = Number(v1Val);
+        v2Val = Number(v2Val);
+
+        let res = 0;
+        switch (
+          opVal // switch 쓰고 싶었는데 ()안에 +,-...를 넣는다고 생각해서 고민하다 못 썼음...
+        ) {
+          case '+':
+            res = v1Val + v2Val;
+            break;
+          case '-':
+            res = v1Val - v2Val;
+            break;
+          case '*':
+            res = v1Val * v2Val;
+            break;
+          case '/':
+            res = v1Val / v2Val;
+            break;
+        }
+        console.log(res);
+        result.value = res; // 결과창에 계산한 결괏값을 할당
+      }
+
+      // 요소에 value를 쓸 수 없는 이유
+      // let resVal = document.getElementById('result').value
+      // .value는 하나의 속성을 가져오고 끝(변수에 텍스트 값이 할당된 것과 같음) >> 문자열을 반환 것과 같음
+      // resVal = res;
+      // input 창에 반영 안됨 -> text 값으로 존재, 요소에 할당X
+
+      /*if (operator.value == '+') {
+          result.value = Number(value1.value) + Number(value2.value);
+        }
+        if (operator.value == '-') {
+          result.value = Number(value1.value) - Number(value2.value);
+        }
+        if (operator.value == 'x') {
+          result.value = Number(value1.value) * Number(value2.value);
+        }
+        if (operator.value == '/') {
+          result.value = Number(value1.value) / Number(value2.value);
+        }
+      }*/
+
+      function reset() {
+        let value1 = document.getElementById('value1');
+        let value2 = document.getElementById('value2');
+        let operator = document.getElementById('operator');
+        let result = document.getElementById('result');
+
+        value1.value = '';
+        value2.value = '';
+        operator.value = '';
+        result.value = '';
+      }
+    </script>
+  </body>
+</html>
