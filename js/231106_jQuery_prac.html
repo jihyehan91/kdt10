@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.min.js"
+      integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+      crossorigin="anonymous"
+    ></script>
+    <title>jQuery 실습</title>
+    <script>
+      function changeImg(name) {
+        // img의 src 속성을 변경해주는 함수
+        // 동일한 기능 -> 1개의 함수 (매개 변수를 활용하면 된다.)
+        // name: apple or banana or grape or peach
+        $('img').attr('src', `/img/${name}.png`);
+      }
+    </script>
+  </head>
+  <body>
+    <!-- 실습1. 이미지 바꾸기 -->
+    <img src="" alt="과일" width="100px" height="100px" />
+    <br />
+    <button onclick="changeImg('apple')">사과</button>
+    <button onclick="changeImg('banana')">바나나</button>
+    <button onclick="changeImg('grape')">포도</button>
+    <button onclick="changeImg('peach')">복숭아</button>
+  </body>
+</html>
