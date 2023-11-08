@@ -108,24 +108,64 @@
     </table>
 
     <script>
-      $('td > p').on('click', function () {
-        console.log(this); // p태그
-        console.log($(this).text()); //숫자;
+      // 내 코드
+      //$('td > p').on('click', function (e) {
+      //console.log(this); // p태그
+      //console.log($(this).text()); //날짜
+      // 날짜 입력받기 달력-> input으로
+      // 날짜를 찍는다 -> 찍는 위치 확인 가능
+      // p의 위치 e.target
+      //let textDate = $(this).text();
+      //$('#date').val(textDate);
+      //});
 
-        // 날짜 입력받기 달력-> input으로
-        let textDate = $(this).text();
-        $('#date').val(textDate);
+      //function writeSchedule() {
+      // 작성을 누르면 클릭 이벤트 발생한 위치로
+      // 1. 입력받은 내용을
+      //let textCon = $('#content').val();
+      // 2. p태그에 넣어서
+      // 3. p태그 밑에 추가하기...
+      //$('td').append(`<p>${textCon}</p>`); // 변수 사용은 백틱!!
+      //$('#content').val('');
+      //}
+
+      // 해설
+      // 1. 날짜 클릭 -> 날짜 해당하는 내용을 input에 넣기
+      // 2. 내용 작성 후 작성 버튼 클릭하면 클릭했던 날에 값을 추가
+
+      // this는 스코프를 벗어나면 사라짐 > 전역 변수 필요
+      // this를 기억하기 위한 전역변수
+      let target;
+      // 전역 변수를 생각하지 못했다...
+
+      $('td > p').on('click', function () {
+        console.log(this); // <p>7</p>
+        // 날짜만 가져오려면 this의 text값을 가져와야 함
+        console.log($(this).text()); // 7. text값 반환 메서드. (괄호 안에 넣으면 입력 메서드)
+
+        // 날짜, 내용 input 선택
+        $('#date').val($(this).text());
+        //let date = $(this).text();
+
+        // target에 this를 기억해두기 ★★
+        target = this;
       });
-      function writeSchedule(e) {
-        if (e.target == textDate) {
-          // 입력받은 내용 -> 달력으로...
-          // 1. 입력받은 내용을
-          // 2. p태그에 넣어서
-          // 3. p태그 밑에 추가하기...
-          let textCon = $('#content').val();
-          $('p').append('<p>textCon</p>');
-          // 안된다ㅠㅠㅠㅠㅠ
-        }
+
+      function writeSchedule() {
+        // 내용 가져오기
+        let content = $('#content').val();
+
+        // 요소 추가 (제이쿼리는 돔과 다르게 요소 생성이 필요하지 않음)
+        // 제이쿼리 선택자 / 요소 선택 >  target에는 이미 요소가 들어가 있어 따로 선택자를 줄 필요가 없다.
+        // append를 사용할 때는 추가할 요소의 부모를 먼저 선택한다.
+        $(target)
+          .parent()
+          .append('<span>' + content + '</span><br/>');
+        // $(target.parentNode).append(~~)와 동일한 의미
+
+        // 초기화
+        $('#content').val(''); // 내용
+        $('#date').val(''); // 날짜
       }
     </script>
   </body>

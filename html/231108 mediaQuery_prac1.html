@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>실습. 미디어쿼리</title>
+    <style>
+      /* 1번 실습 */
+      /*@media screen and (min-width: 500px) and (min-height: 500px) {
+        body {
+          background-color: skyblue;
+          background-color: green;
+        }
+      }
+      @media screen and (max-width: 300px) and (max-height: 300px;) {
+        body {
+          background-color: orange;
+        }
+        /*폰트패밀리 확인 ... 안먹는듯*/
+      /*p {
+          font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial,
+            sans-serif;
+        }
+      }*/
+
+      /* 2번 실습 */
+      .container {
+        display: flex;
+      }
+      .item {
+        width: 100px;
+        height: 100px;
+        background-color: black;
+        margin: 15px;
+        border: 1px solid red;
+        border-radius: 15px;
+      }
+      @media screen and (max-width: 700px) {
+        .container {
+          display: block;
+        }
+        .item {
+          background-color: skyblue;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- <p>미디어 쿼리 실습</p> -->
+    <div class="container">
+      <div class="item"></div>
+      <div class="item"></div>
+      <div class="item"></div>
+    </div>
+  </body>
+</html>
