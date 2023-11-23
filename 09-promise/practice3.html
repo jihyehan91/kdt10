@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>실습3. promise로 배경색 변경하기</title>
+</head>
+
+<body>
+  <h1>콜백지옥 예시</h1>
+
+  <script>
+    /*setTimeout(function() {
+      document.body.style.backgroundColor = 'red'
+      setTimeout(function() {
+        document.body.style.backgroundColor = 'orange'
+        setTimeout(function() {
+          document.body.style.backgroundColor = 'yellow'
+          setTimeout(function() {
+            document.body.style.backgroundColor = 'green'
+            setTimeout(function() {
+              document.body.style.backgroundColor = 'blue'
+            }, 1000)
+          }, 1000)
+        }, 1000)
+      }, 1000)
+    }, 1000)*/
+
+    // promise로 바꿈
+    function changeBgColor(newColor) {
+      return new Promise((resolve, reject) => {
+        setTimeout(function() {
+          document.body.style.backgroundColor = newColor
+          resolve()
+        }, 1000)
+      })
+    }
+
+    // 1) then()을 이용
+    changeBgColor('red')
+      .then(function() {
+        return changeBgColor('orange');
+      }).then(function() {
+        return changeBgColor('yellow');
+      }).then(function() {
+        return changeBgColor('green');
+      }).then(function() {
+        return changeBgColor('blue');
+      })
+
+    /* 내 코드
+    function red() {
+      return new Promise(function(resolve, reject) {
+        setTimeout(function() {
+          document.body.style.backgroundColor = 'red'
+          resolve('red')
+        }, 1000)
+      })
+    }
+
+    function yellow() {
+      return new Promise(function(resolve, reject) {
+        setTimeout(function() {
+          document.body.style.backgroundColor = 'yellow'
+          resolve('yellow')
+        }, 1000)
+      })
+    }
+
+    red()
+      .then(function() {
+        return yellow()
+      })*/
+
+
+    // async-await 이용
+    async function exec() {
+      await changeBgColor('red');
+      await changeBgColor('orange');
+      await changeBgColor('yellow');
+      await changeBgColor('green');
+      await changeBgColor('blue');
+    }
+
+    exec();
+  </script>
+</body>
+
+</html>
