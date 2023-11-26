@@ -5,18 +5,24 @@ const PORT = 8000;
 // 1. 사용할 엔진 등록
 // 2. 폴더 생성 (폴더명 적고 실제 폴더 만들기)
 app.set('view engine', 'ejs');
-app.set('/views', 'views');
+app.set('views', './views'); // view 템플릿 파일을 찾을 때 사용할 디렉토리 지정, 디폴트값이 views라는 폴더라 가급적 views를 사용(기본값 사용하면 생략 가능)
 
 // 미들웨어 등록
 
 // req.body 객체를 해석할 수 있도록 body-parser 미들웨어 등록
-app.use(express.urlencoded({ extended: true })); // post 요청으로 들어오는 모든 형식의 데이터를 파싱
+app.use(express.urlencoded({ extended: true })); // post 요청으로 들어오는 모든 형식의 데이터를 파싱, HTML form -> body
 // extended는 urlencoded 메서드의 옵션
-app.use(express.json()); // json 형식으로 데이터를 주고 받음
+app.use(express.json()); // json 형식으로 데이터를 주고 받음, REST API -> body
 
 app.get('/', (req, res) => {
   // views 폴더 내부에 index라는 ejs 파일을 보여줌
   res.render('index');
+});
+
+// get 실습
+app.get('/', (req, res) => {
+  // views 폴더 내부에 index라는 ejs 파일을 보여줌
+  res.render('practice1');
 });
 
 // GET '/login' 요청이 들어오면 임의의 메시지를 전송한다.
@@ -34,6 +40,13 @@ app.post('/login', (req, res) => {
   console.log(req.body); // { id: 'banana', pw: '1234' }
   // res.send('post 요청 성공!');
   res.render('result', { title: 'Post 요청', userInfo: req.body });
+});
+
+// post 실습
+app.post('/login', (req, res) => {
+  console.log(req.body); // { id: 'banana', pw: '1234' }
+  // res.send('post 요청 성공!');
+  res.render('prResult', { title: 'Post 요청', userName: req.body });
 });
 
 app.post('/js-form-check', (req, res) => {
