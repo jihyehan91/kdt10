@@ -56,34 +56,64 @@
     </fieldset>
   </form>
   <br>
-  <button type="button" onclick="axiosGet()">회원가입</button>
+  <button type="button" onclick="clickRegister();">회원가입</button>
 
   <div class="result"></div>
 
   <script>
     const resultBox = document.querySelector('.result');
 
-    function axiosGet() {
-      const form = document.forms['register']
-      const data = {
+    function clickRegister() {
+      const form = document.forms['register'];
+      console.log(form.hobby.value); // value라는 속성에 접근 X -> Nodlist 형태로 반환 
+      console.log(form.name.value); // value라는 속성에 접근 O -> 하나의 요소로 반환 
+
+      // hobby checkbox 정보 출력하고 싶은 경우, 다음과 같이 새로운 배열로 정의
+      // case1. forEach 반복문 사용
+      /*const hobbies = [];
+      form.hobby.forEach((elem) => {
+        if (elem.checked) { // 체크가 되어 있으면 true 반환
+          hobbies.push(elem.value); // 체크된 항목의 값을 넣어주기.
+        }
+      })*/
+
+      // case2. filter, map 반복문 사용
+      // Array.from(arrayLike): 유사 배열 객체를 배열로 변환해준다.
+      const hobbies = Array.from(form.hobby)
+        .filter((elem) => elem.checked === true)
+        .map((elem) => elem.value);
+
+      console.log('hobbies', hobbies);
+
+      const data = { // 서버에 넘길 데이터값
         name: form.name.value,
         gender: form.gender.value,
         birthYear: form.birthYear.value,
         birthMonth: form.birthMonth.value,
         birthDay: form.birthDay.value,
-        hobby: form.hobby.value
+        hobby: hobbies
       }
+
+      console.log('data >', data);
 
       axios({
         method: 'get',
-        url: '/axios',
+        url: '/axios1',
         params: data
       }).then((response) => {
-        console.log(data)
-        resultBox.textContent = `Get /axios 요청 완료! ${data.name}님의 성별은 ${data.gender}!`;
+        console.log(response.data)
+        const {
+          name,
+          gender,
+          birthYear,
+          birthMonth,
+          birthDay,
+          hobby
+        } = response.data;
+        resultBox.textContent = `${name}님 환영합니다! 가입 완료! 생년월일은 ${birthYear}년 ${birthMonth}월 ${birthDay}일! 취미는 ${hobby}`;
       }).catch((error) => {
         console.log('Error!', error)
-        resultBox.textContent = `Get /axios 요청 실패! ${error.response.data}`;
+        resultBox.textContent = `요청 실패! ${error.response.data}`;
       })
 
     }

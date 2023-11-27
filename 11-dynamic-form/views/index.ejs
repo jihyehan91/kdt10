@@ -165,6 +165,10 @@
         // 둘 다 입력이 잘 됐으면, axios 요청을 보내기
 
         if (!form.name.checkValidity()) { // !false
+          // checkValidity() 자체를 유효성 검사에 따른 결과를 반환한다라고 생각하면 
+          // 빈 값일 때 유효성 검사를 통과하지 못해 -> false 반환
+          // 그래서 !form.name.checkValidity()를 유효성 검사를 통과하지 못하면 이라고 생각하면
+          // 부정연산자를 붙이는 것이 말이 된다.
           resultBox.textContent = '이름을 입력해주세요.'
         } else if (!form.gender[0].checkValidity()) {
           resultBox.textContent = '성별을 입력해주세요.'
