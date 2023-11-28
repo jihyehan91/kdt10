@@ -36,6 +36,37 @@ const uploadDetail = multer({
   },
 });
 
+// multer 세부 설정 - 실습용
+const uploadPractice = multer({
+  // storage: 저장할 공간에 대한 정보
+  storage: multer.diskStorage({
+    // destination: 경로 설정
+    destination(req, file, done) {
+      // done: callback 함수
+      // done(null, xx) : null => 에러가 없다는 의미
+      done(null, 'uploads/'); // 파일을 업로드할 경로 설정
+    },
+    filename(req, file, done) {
+      // < 여기를 바꾼다
+
+      console.log('filename > req.body', req.body); // {'id': 'apple'}
+      // 파일의 확장자를 추출 => "path" 모듈 활용
+      const ext = path.extname(file.originalname);
+      console.log('ext >', ext);
+      console.log('file name >', path.basename(file.originalname, ext));
+
+      // path.basename(file.originalname, ext) => apple
+      // => 확장자를 제외한 파일이름만
+      // done(null, path.basename(file.originalname, ext) + Date.now() + ext);
+      done(null, req.body.id + ext); // id 값을 받아와서 사용
+    },
+  }),
+  // limits: 파일 제한 정보
+  limits: {
+    fileSize: 5 * 1024 * 1024, // 5MB
+  },
+});
+
 app.set('view engine', 'ejs');
 app.set('views', './views');
 app.use(express.urlencoded({ extended: true }));
@@ -46,6 +77,10 @@ app.use('/uploads', express.static(__dirname + '/uploads'));
 
 app.get('/', (req, res) => {
   res.render('index');
+});
+
+app.get('/prac', (req, res) => {
+  res.render('prac');
 });
 
 // 1. single(): 하나의 파일을 업로드
@@ -106,6 +141,21 @@ app.post('/dynamic', uploadDetail.single('dynamicFile'), (req, res) => {
   console.log(req.file);
   console.log(req.body);
   res.send({ file: req.file, title: req.body.title });
+});
+
+// -----------실습-------------
+app.post('/upload/practice', uploadPractice.single('profile'), (req, res) => {
+  //uploadPractice 미들웨어로 가서 처리 > req 객체를 이용
+  // 테스트
+  console.log(req.body);
+  console.log(req.file);
+  res.send('응답');
+});
+
+app.post('/upload/practice2', uploadPractice.single('profile'), (req, res) => {
+  console.log(req.body);
+  console.log(req.file);
+  res.send('회원가입 완료');
 });
 
 app.listen(PORT, () => {
