@@ -43,6 +43,11 @@ app.get('/axios', (req, res) => {
   // res.status(400).send('error msg!');
 });
 
+app.post('/axios', (req, res) => {
+  console.log(req.body);
+  res.send(req.body);
+});
+
 // 실습1
 app.get('/axios1', (req, res) => {
   console.log(req.query);
@@ -54,16 +59,15 @@ const userId = '홍길동';
 const userPw = '1234';
 
 app.post('/axios2', (req, res) => {
-  console.log(req.body); //서버로 보낸 데이터 확인
-  // 데이터 확인용 -> {id: '홍길동', pw: '1234'}
+  console.log(req.body); // { userId: 'banana', userPw: '1234' }
 
-  // userId, userPw라는 변수 값과 클라이언트에서 넘겨받은 값이 일치하는지 검사
-  // 결괏값을 반환
-  if (userId === req.body.id && userPw === req.body.ps) {
-    res.send({ userInfo: req.body, isSucess: true });
+  // userId, userPw 라는 변수 값과 클라이언트에서 넘겨받은 값이 일치하는지 검사
+  if (userId === req.body.userId && userPw === req.body.userPw) {
+    res.send({ userInfo: req.body, isSuccess: true });
   } else {
-    res.send({ isSucess: false });
+    res.send({ isSuccess: false });
   }
+  // 결과 값을 반환
 });
 
 // fetch
