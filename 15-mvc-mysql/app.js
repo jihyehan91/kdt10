@@ -8,7 +8,7 @@ app.use('/static', express.static(__dirname + '/static'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-// 라우터 분리
+// 라우터 분리 - 미들웨어 등록
 const indexRouter = require('./routes');
 app.use('/', indexRouter); // localhost: PORT/
 
