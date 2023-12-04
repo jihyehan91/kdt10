@@ -41,6 +41,7 @@ exports.post_visitor = (req, res) => {
 };
 
 // GET /visitor => localhost:PORT/visitor?id=N
+// 1. 수정하려고 데이터 불러오기 - req.query로
 exports.get_visitor = (req, res) => {
   console.log(req.query);
   console.log(req.query.id);
@@ -54,6 +55,7 @@ exports.get_visitor = (req, res) => {
 };
 
 // GET /visitor => localhost:PORT/visitor/:id
+// 2. 수정하려고 데이터 불러오기 - req.params로
 exports.get_visitor2 = (req, res) => {
   console.log(req.params);
   console.log(req.params.id);
@@ -78,8 +80,8 @@ exports.patch_visitor = (req, res) => {
 
 // DELETE /visitor
 exports.delete_visitor = (req, res) => {
-  console.log(req.body);
-  console.log(req.body.id);
+  console.log('req.body', req.body);
+  console.log('req.body.id', req.body.id);
 
   Visitor.deleteVisitor(req.body.id, (result) => {
     console.log('deleteVisitor Cvisitor.js >', result);

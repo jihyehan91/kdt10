@@ -52,13 +52,13 @@ exports.postVisitor = (data, cb) => {
     if (err) throw err;
     console.log('Visitor.js', rows);
     /* ResultSetHeader {
-          fieldCount: 0,
-          affectedRows: 1,
-          inserId: 3,
-          inof: '',
-          serverStatus: 2,
-          warningStatus: 0,
-          changedRows: 0
+        fieldCount: 0,
+        affectedRows: 1,
+        insertId: 3,
+        inof: '',
+        serverStatus: 2,
+        warningStatus: 0,
+        changedRows: 0
       }
     */
     cb(rows.insertId); // 콜백함수 호출, 매개변수로 3이라는 값
@@ -66,12 +66,14 @@ exports.postVisitor = (data, cb) => {
 };
 
 exports.getVisitor = (id, cb) => {
+  // id 컬럼 값이 특정한 값과 일치하는 행들을 선택하는 역할
+  // get_visitor 함수에서 보낸 req.query.id와 일치하는 id를 특정함
   const sql = 'SELECT * FROM visitor WHERE id=?';
   conn.query(sql, [id], (err, rows) => {
     if (err) throw err;
 
     console.log('getVisitor Visitor.js >', rows);
-    // [ {id: 1, name: }]
+    // [ { id: 1, name: '홍길동', comment: '내가 왔다.' } ]
     cb(rows[0]);
   });
 };
