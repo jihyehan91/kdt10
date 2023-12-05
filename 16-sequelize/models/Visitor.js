@@ -20,7 +20,7 @@ const Visitor = (sequelize, DataTypes) => {
         type: DataTypes.STRING(10),
         allowNull: false,
       },
-      Comment: {
+      comment: {
         type: DataTypes.TEXT('medium'),
       },
     }, // param2: 컬럼 정의
