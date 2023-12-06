@@ -14,8 +14,8 @@ const Player = require('./Player')(sequelize, Sequelize);
 const Profile = require('./Profile')(sequelize, Sequelize);
 const Team = require('./Team')(sequelize, Sequelize);
 
-// TODO: 관계 형성
 
+// TODO: 관계 형성
 // 1) Player : Profile = 1 : 1
 // 한 선수당 하나의 프로필을 가짐
 Player.hasOne(Profile, {
