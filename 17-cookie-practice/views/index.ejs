@@ -63,18 +63,25 @@
     console.log('popup >> ', '<%= popup %>');
     // checkbox.checked === true (체크시); ''
     // checkbox.checked === false (미체크시); 'hide'
+    const popup = '<%= popup %>'
 
     // TODO: popup 쿠키 값이 ''이라면, 모달 보여주기
-    if (!'<%= popup %>') myModal.show();
+    if (popup === '') myModal.show();
 
     // TODO: 모달 닫기 버튼 클릭 함수 완성
     function closeModal() {
       // 1. 체크 박스가 체크되어 있다면 (오늘 하루 보지 않음을 선택했다면)
       const checkbox = document.querySelector('#cookie')
-      if (checkbox.checked === true) {
+      if (checkbox.checked) {
         // POST /setCookie 요청 보내기 (back에서 popup 쿠키 설정하기)
+        axios({
+          method: 'POST',
+          url: '/setcookie',
+          // 서버에서 데이터를 쓰지 않으면 data 생략
+        }).then((res) => {
+          console.log('res.data >', res.data);
+        })
       }
-
 
       // 2. js로 모달 닫기 수행 (위 참고 링크 확인)
       myModal.hide();
