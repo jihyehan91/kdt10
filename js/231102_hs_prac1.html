@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>array for prac</title>
+    <script>
+      // 실습1 1~100까지 배열 + 배열의 합
+      // for문
+      let arr = [];
+      // 1~100까지
+      for (let i = 1; i <= 100; i++) {
+        arr.push(i);
+      }
+      //for문의 합
+      let sum1 = 0;
+      for (let i = 0; i < arr.length; i++) {
+        sum1 += arr[i];
+      }
+      console.log(sum1);
+      // for of문의 합
+      let sum2 = 0;
+      for (let i of arr) sum2 += i;
+      console.log(sum2);
+      //forEach문의 합
+      let sum3 = 0;
+      arr.forEach((i) => (sum3 += i));
+      console.log(sum3);
+
+      // 실습2
+      let fruits1 = [
+        '사과',
+        '딸기',
+        '파인애플',
+        '수박',
+        '참외',
+        '오렌지',
+        '자두',
+        '망고',
+      ];
+      let fruits2 = ['수박', '사과', '참외', '오렌지', '파인애플', '망고'];
+      // 두 배열 동일 요소 배열 same만들기
+      let same = [];
+      let diff = [];
+
+      for (let i = 0; i < fruits1.length; i++) {
+        if (fruits2.includes(fruits1[i])) {
+          same.push(fruits1[i]);
+        } else {
+          diff.push(fruits1[i]);
+        }
+      }
+      //아...for문 돌려서 push로 넣는 것까지는 생각했는데 if 쓸 생각을 못했네...(중복값을 어떻게 찾을지, 제거할지를 생각 못함)
+      console.log(same);
+      console.log(diff);
+
+      let same2 = [];
+      let diff2 = [];
+      same2 = fruits1.filter((i) => fruits2.includes(i)); // 이해가 되지 않는다...filter에 대해 책 찾아보고 다시 생각해보기
+      diff2 = fruits1.filter((i) => !fruits2.includes(i));
+      console.log(same2);
+      console.log(diff2);
+    </script>
+  </head>
+  <body></body>
+</html>

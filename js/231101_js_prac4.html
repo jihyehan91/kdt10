@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>실습 for문</title>
+    <script>
+      // 실습 7
+      /*for (let i = 1; i <= 10000; i++) {
+        if (i % 13 == 0 && i % 2 !== 0) {
+          console.log(i);
+        }
+      }*/
+      // 해설
+      /*for (let i = 0; i <= 1000; i = i + 13) {
+        if (i % 2 == 1) console.log(i);
+      }*/
+
+      /*let num = prompt('숫자를 입력하세요.');
+      num = Number(num);
+      for (let i = 1; i <= num; i++) {
+        if (i % 13 == 0 && i % 2 !== 0) {
+          console.log(i);
+        }
+      }*/
+
+      // 실습 8
+      /*for (let i = 2; i < 10; i++) {
+        for (let j = 1; j < 10; j++) {
+          console.log(i + 'x' + j + '=' + i * j);
+        }
+      }*/
+      // 해설
+      /*for (let i = 2; i < 10; i++) {
+        console.log(i + '단');
+        for (let j = 1; j < 10; j++) {
+          console.log(i + 'x' + j + '=' + i * j);
+        }
+      }*/
+
+      // 실습 9
+      let n = prompt('정수 n을 입력하시오. (단, 0 < n < 100)');
+      n = Number(n);
+
+      let sum = 0;
+      for (let i = 0; i < n; i++) {
+        if (n <= 0 && n >= 100) alert('입력값이 잘못됐습니다.');
+        else {
+          if (i % 2 == 0 || i % 3 == 0) sum = sum + i;
+        }
+      }
+      console.log('sum:', sum);
+
+      let sum2 = 0;
+      let i = 0;
+      while (i < n) {
+        if (i % 2 == 0 || i % 3 == 0) sum = sum + i;
+        i++;
+      }
+    </script>
+  </head>
+  <body></body>
+</html>

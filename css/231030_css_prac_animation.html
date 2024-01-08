@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>실습 3 animation_prac</title>
+    <style>
+      .ball {
+        width: 100px;
+        height: 100px;
+        background-color: plum;
+        border-radius: 50%;
+        position: absolute;
+        animation-name: move;
+        animation-duration: 3s;
+        animation-iteration-count: 6;
+      }
+
+      @keyframes move {
+        0% {
+          top: 0;
+          left: 0;
+        }
+        25% {
+          top: 0;
+          left: 500px;
+        }
+        50% {
+          top: 500px;
+          left: 500px;
+          /* 25%에서 top값만 변함 */
+        }
+        75% {
+          top: 500px;
+          left: 0;
+          /* 50%d에서 left값만 변함 */
+        }
+        100% {
+          top: 0;
+          left: 0;
+        }
+      }
+
+      .txt {
+        position: absolute;
+        animation-name: txt-anim;
+        animation-duration: 3s;
+      }
+      @keyframes txt-anim {
+        0% {
+          margin-left: 100%;
+          width: 300%;
+        }
+        100% {
+          margin-left: 0%;
+          width: 100%;
+        }
+      }
+
+      /* 실습4 */
+      p {
+        animation: 3s slidein;
+      }
+
+      @keyframes slidein {
+        from {
+          /* 시작점 */
+          margin-left: 100%;
+          width: 300%;
+          /* 1줄이 브라우저만큼 줄었다 늘었다 함. 처음에 100%이상의 크기를 줘야 1줄로 들어오다 width가 맞아 모든 글자가 화면에 맞게 들어옴. */
+        }
+        to {
+          margin-left: 0;
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="ball"></div>
+
+    <!-- 실습4 -->
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint obcaecati
+      doloribus cupiditate, dolor at corrupti incidunt illum natus, iure
+      recusandae, necessitatibus quos laboriosam! Debitis, asperiores.
+      Consequuntur obcaecati quam accusamus commodi?Lorem ipsum dolor sit amet
+      consectetur adipisicing elit. Sint obcaecati doloribus cupiditate, dolor
+      at corrupti incidunt illum natus, iure recusandae, necessitatibus quos
+      laboriosam! Debitis, asperiores. Consequuntur obcaecati quam accusamus
+      commodi?
+    </p>
+  </body>
+</html>

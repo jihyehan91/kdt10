@@ -1,0 +1,172 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <script
+      type="text/javascript"
+      src="https://code.jquery.com/jquery-3.5.0.min.js"
+    ></script>
+
+    <title>내 스케줄</title>
+
+    <style>
+      td {
+        width: 100px;
+        height: 100px;
+        color: black;
+      }
+      tr > td:first-child > p,
+      tr > th:first-child > p {
+        color: red;
+      }
+      tr > td:last-child > p,
+      tr > th:last-child > p {
+        color: blue;
+      }
+      td > p:hover {
+        cursor: pointer;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div>
+      날짜 : <input type="text" id="date" readonly /> <br />
+      내용 : <input type="text" id="content" /> <br />
+      <button type="button" onclick="writeSchedule();">작성</button> <br />
+    </div>
+    <div style="font-size: 2em; color: green; text-align: center">
+      2022년 7월
+    </div>
+
+    <br />
+
+    <table align="center" width="500" style="text-align: center">
+      <tr>
+        <th>日</th>
+        <th>月</th>
+        <th>火</th>
+        <th>水</th>
+        <th>木</th>
+        <th>金</th>
+        <th>土</th>
+      </tr>
+      <tr>
+        <td><p></p></td>
+        <td><p></p></td>
+        <td><p></p></td>
+        <td><p></p></td>
+        <td><p></p></td>
+        <td><p>1</p></td>
+        <td><p>2</p></td>
+      </tr>
+
+      <tr>
+        <td><p>3</p></td>
+        <td><p>4</p></td>
+        <td><p>5</p></td>
+        <td><p>6</p></td>
+        <td><p>7</p></td>
+        <td><p>8</p></td>
+        <td><p>9</p></td>
+      </tr>
+      <tr>
+        <td><p>10</p></td>
+        <td><p>11</p></td>
+        <td><p>12</p></td>
+        <td><p>13</p></td>
+        <td><p>14</p></td>
+        <td><p>15</p></td>
+        <td><p>16</p></td>
+      </tr>
+      <tr>
+        <td><p>17</p></td>
+        <td><p>18</p></td>
+        <td><p>19</p></td>
+        <td><p>20</p></td>
+        <td><p>21</p></td>
+        <td><p>22</p></td>
+        <td><p>23</p></td>
+      </tr>
+      <tr>
+        <td><p>24</p></td>
+        <td><p>25</p></td>
+        <td><p>26</p></td>
+        <td><p>27</p></td>
+        <td><p>28</p></td>
+        <td><p>29</p></td>
+        <td><p>30</p></td>
+      </tr>
+      <tr>
+        <td><p>31</p></td>
+        <td><p></p></td>
+        <td><p></p></td>
+        <td><p></p></td>
+        <td><p></p></td>
+        <td><p></p></td>
+        <td><p></p></td>
+      </tr>
+    </table>
+
+    <script>
+      // 내 코드
+      //$('td > p').on('click', function (e) {
+      //console.log(this); // p태그
+      //console.log($(this).text()); //날짜
+      // 날짜 입력받기 달력-> input으로
+      // 날짜를 찍는다 -> 찍는 위치 확인 가능
+      // p의 위치 e.target
+      //let textDate = $(this).text();
+      //$('#date').val(textDate);
+      //});
+
+      //function writeSchedule() {
+      // 작성을 누르면 클릭 이벤트 발생한 위치로
+      // 1. 입력받은 내용을
+      //let textCon = $('#content').val();
+      // 2. p태그에 넣어서
+      // 3. p태그 밑에 추가하기...
+      //$('td').append(`<p>${textCon}</p>`); // 변수 사용은 백틱!!
+      //$('#content').val('');
+      //}
+
+      // 해설
+      // 1. 날짜 클릭 -> 날짜 해당하는 내용을 input에 넣기
+      // 2. 내용 작성 후 작성 버튼 클릭하면 클릭했던 날에 값을 추가
+
+      // this는 스코프를 벗어나면 사라짐 > 전역 변수 필요
+      // this를 기억하기 위한 전역변수
+      let target;
+      // 전역 변수를 생각하지 못했다...
+
+      $('td > p').on('click', function () {
+        console.log(this); // <p>7</p>
+        // 날짜만 가져오려면 this의 text값을 가져와야 함
+        console.log($(this).text()); // 7. text값 반환 메서드. (괄호 안에 넣으면 입력 메서드)
+
+        // 날짜, 내용 input 선택
+        $('#date').val($(this).text());
+        //let date = $(this).text();
+
+        // target에 this를 기억해두기 ★★
+        target = this;
+      });
+
+      function writeSchedule() {
+        // 내용 가져오기
+        let content = $('#content').val();
+
+        // 요소 추가 (제이쿼리는 돔과 다르게 요소 생성이 필요하지 않음)
+        // 제이쿼리 선택자 / 요소 선택 >  target에는 이미 요소가 들어가 있어 따로 선택자를 줄 필요가 없다.
+        // append를 사용할 때는 추가할 요소의 부모를 먼저 선택한다.
+        $(target)
+          .parent()
+          .append('<span>' + content + '</span><br/>');
+        // $(target.parentNode).append(~~)와 동일한 의미
+
+        // 초기화
+        $('#content').val(''); // 내용
+        $('#date').val(''); // 날짜
+      }
+    </script>
+  </body>
+</html>

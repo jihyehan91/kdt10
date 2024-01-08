@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>flex-wrap</title>
+    <style>
+      .container {
+        width: 500px;
+        height: 500px;
+        background-color: lightsteelblue;
+      }
+      .container.row {
+        display: flex;
+        align-items: center;
+      }
+      .container.column {
+        flex-direction: column;
+        display: flex;
+        align-items: center;
+      }
+      .container.two-row {
+        flex-direction: row;
+        flex-wrap: wrap;
+        display: flex;
+        align-content: center;
+      }
+      .container > div {
+        width: 100px;
+        height: 100px;
+      }
+      .one {
+        background-color: crimson;
+      }
+      .two {
+        background-color: green;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container row">
+      <div class="one"></div>
+      <div class="two"></div>
+      <div class="one"></div>
+      <div class="two"></div>
+      <div class="one"></div>
+      <div class="two"></div>
+      <div class="one"></div>
+      <div class="two"></div>
+    </div>
+    <br /><br />
+    <div class="container column">
+      <div class="one"></div>
+      <div class="two"></div>
+      <div class="one"></div>
+      <div class="two"></div>
+      <div class="one"></div>
+      <div class="two"></div>
+      <div class="one"></div>
+      <div class="two"></div>
+    </div>
+    <br /><br />
+    <div class="container two-row">
+      <div class="one"></div>
+      <div class="two"></div>
+      <div class="one"></div>
+      <div class="two"></div>
+      <div class="one"></div>
+      <div class="two"></div>
+      <div class="one"></div>
+      <div class="two"></div>
+    </div>
+    <br /><br />
+    <div class="container two-column">
+      <div class="one"></div>
+      <div class="two"></div>
+      <div class="one"></div>
+      <div class="two"></div>
+      <div class="one"></div>
+      <div class="two"></div>
+      <div class="one"></div>
+      <div class="two"></div>
+    </div>
+  </body>
+</html>

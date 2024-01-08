@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://kit.fontawesome.com/837ff3adc1.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>실습 header만들기</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        height: 10000px;
+      }
+      ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+      /* header 스타일링 */
+      header {
+        width: 100%;
+        height: 100px;
+        z-index: 100; /* 헤더가 가려지지 않도록 */
+      }
+      header .inner {
+        background-color: lightblue;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%; /* 헤더 높이에 100%가 되도록 */
+      }
+      header .inner .logo {
+        position: relative; /* right 속성을 주기 위해 */
+        right: 200px;
+        color: white;
+        font-size: 2rem;
+      }
+      header .inner .menu {
+        display: flex;
+      }
+      header .inner .menu li {
+        margin: 0 10px;
+        font-weight: 800;
+        cursor: pointer;
+      }
+
+      /* @media */
+      @media screen and (max-width: 768px) {
+        header {
+          height: 60px;
+        }
+        header .inner {
+          display: block;
+        }
+        header .inner .logo {
+          /*right: 0px;
+          text-align: center;
+          line-height: 60px;*/
+
+          /* 해설 1 */
+          /* 상하좌우 중앙 정렬하려고 */
+          /*display: flex;
+          justify-content: center;
+          align-content: center;
+          width: 100%;
+          right: 0;
+          height: 60px;*/
+
+          /* 해설 2 */
+          position: static; /* 위에 준 relative 속성 제거 */
+          text-align: center;
+          line-height: 60px;
+        }
+
+        header .inner .menu {
+          /*display: block;
+          position: absolute;
+          top: 60px;
+          background-color: azure;
+          width: 100%;*/
+
+          /* 해설 */
+          display: block;
+          background-color: azure;
+          text-align: center;
+        }
+        header .inner .menu li {
+          padding: 10px 0; /* li버튼 클릭을 고려해 마진보단 패딩 */
+          font-weight: 500;
+        }
+      }
+
+      /* 태블릿 */
+      @media screen and (480px <= max-width <= 1024px) {
+        header {
+          height: 60px;
+        }
+        header .inner {
+          display: block;
+        }
+        header .inner .logo {
+          position: static;
+          text-align: center;
+          line-height: 60px;
+        }
+
+        header .inner .menu {
+          display: block;
+          background-color: azure;
+          text-align: center;
+        }
+        header .inner .menu li {
+          padding: 10px 0;
+          font-weight: 500;
+        }
+      }
+
+      @media screen and(max-width: 480px) {
+        header {
+          height: 45px;
+        }
+        header .inner {
+          display: block;
+          background-color: palevioletred;
+        }
+        header .inner .logo {
+          position: static;
+          text-align: center;
+          line-height: 45px;
+        }
+
+        header .inner .menu {
+          display: block;
+          background-color: pink;
+          text-align: center;
+        }
+        header .inner .menu li {
+          padding: 10px 0;
+          font-weight: 400;
+          font-size: 0.8rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="sticky-top">
+      <div class="inner">
+        <div class="logo">
+          <i class="fa-solid fa-igloo"></i>
+        </div>
+        <ul class="menu">
+          <li>메뉴1</li>
+          <li>메뉴2</li>
+          <li>메뉴3</li>
+          <li>메뉴4</li>
+        </ul>
+      </div>
+    </header>
+  </body>
+</html>

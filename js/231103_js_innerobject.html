@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>표준 내장 객체</title>
+    <script>
+      // 표준 내장 객체
+      // : 자바스크립트가 기본적으로 가지고 있는 객체
+
+      // 1. Date
+      let now = new Date();
+      console.log(now);
+      console.log(now.getFullYear(), '년');
+      console.log(now.getMonth() + 1, '월'); // 0~11까지 > 실제 월 계산 시 +1
+      console.log(now.getDate(), '일');
+      // 2023 - 11 - 03
+      console.log(now.getHours(), '시');
+      console.log(now.getMinutes(), '분');
+      console.log(now.getSeconds(), '초');
+      console.log(now.getMilliseconds(), 'ms');
+      console.log(now.getDay()); // 0: 일요일 ~ 6: 토요일
+
+      // Date 객체를 이용해서 오늘 요일을 얻고, 오늘이 평일인지 주말인지 출력하기
+
+      switch (
+        now.getDay() // switch () 안에 변수 넣기
+      ) {
+        case 0:
+        case 6:
+          console.log('주말');
+          break;
+        default:
+          console.log('평일');
+          break;
+      }
+
+      // 삼항연산자
+      now.getDay() == 0 || now.getDay == 6
+        ? console.log('주말')
+        : console.log('평일');
+      //now.getDay() 자체가 변수다! 변수에 담아서 하겠다는 생각을 할 필요가 없었다...
+
+      // 2. Math 객체 -- Date()와는  다르게 new를 붙여서 쓰지 않음??
+      // 속성
+      console.log(Math.PI);
+      console.log(Math.E);
+      console.log(Math.SQRT2); // 루트2
+
+      // 메소드
+      console.log(Math.min(45, 2, 0, -5, 15));
+      console.log(Math.max(45, 2, 0, -5, 15));
+      console.log(Math.random()); // 0 <= x < 1
+      console.log(Math.round(5.1)); // 반올림: 정수값으로
+      console.log(Math.floor(5.1)); // 내림
+      console.log(Math.ceil(5.1)); // 올림
+      //(123.13).toFixed(2); // 소수점 위치 지정해서 반올림. 문자로 반환
+
+      // 0 <= x < 1
+      // 0 <= x < 1 * 100
+      // 0 <= x < 100 + 1
+      // 1 <= x < 101
+      console.log(Math.random() * 100 + 1);
+      // +1, +100으로 나눠서 생각했음...100 곱하고 1 더하면 되는데 바보다 바보...
+      console.log(Math.floor(Math.random() * 100) + 1); // 소수점이 넘지 않도록
+    </script>
+  </head>
+  <body></body>
+</html>

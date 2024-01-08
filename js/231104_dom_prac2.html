@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>실습2 방명록 만들기</title>
+  </head>
+  <body>
+    <p>방명록입니다.</p>
+    작성자 <input type="text" id="writer" />
+    <br />
+    내용 <input type="text" id="content" />
+    <br />
+    <br />
+    <button onclick="submit()">작성</button>
+    <br />
+    <br />
+    <table class="table" border="1">
+      <tr>
+        <th>번호</th>
+        <th>작성자</th>
+        <th>내용</th>
+        <th>작성일</th>
+      </tr>
+    </table>
+    <script>
+      function submit() {
+        // 입력값 받기
+        let writer = document.getElementById('writer');
+        let content = document.getElementById('content');
+        //console.log(writer);
+        let wrRes = writer.value;
+        let coRes = content.value;
+        console.log(wrRes, coRes);
+
+        // 시간 받기
+        let dateTime = document.getElementsByTagName('tr');
+        console.log(dateTime);
+        let now = new Date();
+        let dateRes = now;
+        console.log(dateRes);
+
+        // 테이블에 추가하기
+        // tr 태그 안에 td 태그가 추가된다...
+        // 요소 추가는 꼭 요소를 만들고 해야하나? 그냥 추가할 수 있나?
+        // 입력값 -> td에 할당 -> 입력값 할당받은 td 추가...인 것 같은데 흠....
+
+        // 1. 추가할 기준 요소 선택(table 태그)
+        // 2. 추가할 새로운 요소 만들기
+        // 3. 2에서 만든 요소에 내용 채우기(작성한 값, 현재 시간)
+        // 4. 1에서 선택한 요소에 자식 요소로 새로 만든 요소 추가하기
+
+        let table = document.querySelector('table');
+        console.log(table);
+
+        let tr = document.createElement('tr');
+
+        let td1 = document.createElement('td');
+        let td2 = document.createElement('td');
+        let td3 = document.createElement('td');
+        let td4 = document.createElement('td');
+      }
+    </script>
+
+    <script>
+      // 해설
+
+      // 전역변수 cnt라는 변수 만들기
+      // 전역변수: 어디서든 script 안에서 쓸 수 있으
+      let cnt = 1; // (표의 순서)
+
+      function writeNote() {
+        // 작성자, 내용 값 가져오기
+        let nameVal = document.getElementById('name').value;
+        let contentVal = document.getElementById('content').value;
+
+        // 테이블 추가
+        // 여러 개의 자식을 추가할 경우: 역순으로 추가하면 된다.(가장 하위 요소부터 추가)
+        // td 만들기 > td를 tr에 추가 > (tr>td)인 tr을 통째로 table에 추가한다.
+
+        // 1. 기준 요소 선택 - 테이블 요소 선택
+        let table = document.getElementById('table');
+        // 2. 새로운 요소 만들기 ( tr, < td - 4개 - 번호, 작성자, 내용, 작성일)
+
+        let garo = document.createElement('tr');
+        // 만들 태그 넣기. <tr></tr>이 garo라는 변수명에 할당
+
+        // td 4개 만들기 ★
+        let td1 = document.createElement('td');
+        let td2 = document.createElement('td');
+        let td3 = document.createElement('td');
+        let td4 = document.createElement('td');
+
+        // td 안의 내용 값 채우기 ★★
+        // td1: 순서(번호)
+        td1.innerText = cnt;
+        cnt++; // (버튼이 눌릴 떄마다) cnt 1씩 증가
+
+        // td2: 작성자
+        td2.innerText = nameVal;
+        // td3: 내용
+        td3.innerText = contentVal;
+        // td4: 작성시간
+        let date = new Date();
+        td4.innerText =
+          date.getFullYear() +
+          '-' +
+          (date.getMonth() + 1) +
+          '-' +
+          date.getDate();
+
+        // tr(garo) 요소에 만든 td들 자식 요소로 추가 ★
+        garo.appendChild(td1);
+        garo.appendChild(td2);
+        garo.appendChild(td3);
+        garo.appendChild(td4);
+        // 한 번에 때려넣지는 못하나보당...
+
+        // tr 요소를 table 요소에 자식 요소로 추가
+        table.appendChild(garo); // 변수명을 넣는다!!
+
+        // 입력값 초기화
+        let name = document.getElementById('name');
+        let content = document.getElementById('content');
+        name.value = '';
+        content.value = '';
+
+        // 초기화 다른 예시
+        let inputs = document.querySelectorAll('input');
+        console.log(inputs);
+
+        // nodelist
+        for (let i = 0; i < inputs.length; i++) {
+          console.log('for문:', inputs[i]);
+          // inputs[i]: 위에 name, content 라는 변수로 만들어둔 요소와 동일
+          inputs[i].value = ''; // 1: name.value, 2: content.value와 같음
+        }
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <%- include('include', {title:'Home'}) %>
+</head>
+
+<body>
+  <%- include('header') %>
+  <h1>실습. Session 연습</h1>
+  <p>여기는 HOME 입니다.</p>
+
+  <!-- if문으로 isLogin이라는 변수를 통해서 로그인 여부 확인 -->
+  <%if(isLogin){%>
+  <p>로그인을 하셨군요</p>
+  <%} else { %>
+  <p>아직 로그인을 하지 않으셨군요</p>
+  <a href="/login"></a>
+  <%}%>
+</body>
+
+</html>

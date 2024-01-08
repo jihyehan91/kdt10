@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>z-index</title>
+    <style>
+      .container {
+        width: 500px;
+        height: 500px;
+        border: 10px solid black;
+      }
+      .box {
+        width: 100px;
+        height: 100px;
+        text-align: center;
+        line-height: 100px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div
+        class="box"
+        style="background-color: red; position: relative; z-index: 1"
+      >
+        item1
+      </div>
+      <div
+        class="box"
+        style="
+          background-color: orange;
+          position: absolute;
+          top: 30px;
+          left: 30px;
+        "
+      >
+        item2
+      </div>
+      <div
+        class="box"
+        style="
+          background-color: yellow;
+          position: absolute;
+          top: 60px;
+          left: 60px;
+          z-index: 1;
+        "
+      >
+        item3
+      </div>
+    </div>
+  </body>
+</html>

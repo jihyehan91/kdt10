@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>file upload</title>
+
+
+  <style>
+    .profile {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      box-shadow: 0 0 20px #0002;
+    }
+  </style>
+
+  <!-- axios cdn -->
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+</head>
+
+<body>
+
+  <h1>파일 업로드</h1>
+
+  <h2>Single file upload</h2>
+  <p>하나의 input에 하나의 파일을 업로드</p>
+
+  <!-- multer는 multipart가 아닌 폼에서는 동작X -> enctype="multipart/form-data" 속성 필수-->
+  <form action="/upload" method="post" enctype="multipart/form-data">
+    <input type="file" name="userfile"> <br>
+    <input type="text" name="title"> <br><br>
+    <button>업로드</button>
+  </form>
+
+
+  <!--파일 여러 개-->
+  <h2>Multi file upload v1</h2>
+  <p>하나의 input에 여러 개의 파일을 업로드</p>
+
+  <!-- 하나의 input에 여러 개 파일을 업로드할 경우 multiple 속성 추가 -->
+  <form action="/upload/array" method="post" enctype="multipart/form-data">
+    <input type="file" name="userfiles" multiple> <br>
+    <input type="text" name="title"> <br><br>
+    <button>업로드</button>
+  </form>
+
+  <br><br>
+  <!-- 여러 개의 input에 각각의 파일을 업로드할 경우 -->
+  <h2>Multi file upload v2</h2>
+  <p>여러 개의 input에 여러 개의 파일을 업로드</p>
+
+  <form action="/upload/fields" method="post" enctype="multipart/form-data">
+    <input type="file" name="userfile1"> <br>
+    <input type="text" name="title"> <br><br>
+    <input type="file" name="userfile2"> <br>
+    <input type="text" name="title"> <br><br>
+    <button>업로드</button>
+  </form>
+
+  <hr>
+  <h2>동적 파일 업로드</h2>
+  <input type="text" name="title" id="title" placeholder="TITLE">
+  <input type="file" name="dynamicFile" id="dynamicFile"><br><br>
+  <button type="button" onclick="fileUpload()">업로드</button>
+  <br>
+  <!-- 업로드한 이미지를 보여줄 img 태그 -->
+  <img src="" alt="">
+
+  <!-- 파일업로드 실습 -->
+  <hr>
+  <h2>일반 폼 전송(파일업로드) 실습</h2>
+  <form action="/upload/practice" method="post" enctype="multipart/form-data">
+    <input type="text" placeholder="아이디" name="id"><br>
+    <input type="file" name="profile" id=""><br><br>
+    <button>회원가입</button>
+  </form>
+
+
+  <!-- 동적 폼 전송 (파일업로드) 실습 -->
+  <hr>
+  <h2>동적 폼 전송(파일 업로드) 실습</h2>
+  <form name="submit">
+    <input type="text" placeholder="아이디" name="id"><br>
+    <input type="file" name="profile" id=""><br><br>
+    <button type="button" onclick="register()">회원가입</button>
+  </form>
+
+
+  <script>
+    function fileUpload() {
+      // js만으로 폼 전송
+      // file을 같이 전송 -> FormData 객체를 활용하기!
+      // FormData란?
+      // form 태그의 데이터를 동적으로 제어할 수 있는 기능, 보통 axios, ajax 등등과 함께 사용
+
+      const formData = new FormData();
+      const file = document.querySelector('#dynamicFile');
+      const title = document.querySelector('#title');
+
+      console.log(file); // 선택한 파일 요소
+      console.log(file.files); // 업로드한 파일 객체
+      console.log(file.files[0]) // 업로드한 후 파일
+
+      // append(key, value)
+      formData.append('dynamicFile', file.files[0]);
+      formData.append('title', title.value);
+
+      axios({
+        method: 'post',
+        url: '/dynamic',
+        data: formData,
+        headers: {
+          'Content-Type': 'multipart/form-data',
+          // enctype 지정과 동일
+        }
+      }).then((res) => {
+        console.log(res.data);
+        const {
+          file,
+          title
+        } = res.data;
+
+        console.log('file >', file)
+        // 이미지가 저장된 경로인 file.path 이용
+        const imgElem = document.querySelector('img');
+        imgElem.src = '/' + file.path;
+        imgElem.alt = title;
+        imgElem.classList.add('profile');
+      })
+    }
+
+    function register() {
+      const form = document.forms['submit'];
+      const formData = new FormData();
+      console.log(form.id) // id 요소
+      console.log(form.profile) // 파일 요소
+
+      console.log(form.profile.files);
+      console.log(form.profile.files[0].name);
+
+      /*
+      // 프론트에서 파일 변경
+      // 파일 처리 이름 변경은 서버에서 하는 걸 추천
+      // 이런 방식은 아이디명이 바뀌면 문제가 발생
+      const file = form.profile.files[0];
+      const fileName = form.profile.files[0].name
+      const userId = form.id.value;
+
+      // 파일 객체에 접근해서 name의 이름을 바꿀 수 있는지 테스트
+      form.profile.files[0].name = form.id.value;
+      console.log('변경 후>', form.profile.files[0].name);
+      // name을 얻어 올 수는 있지만 변경할 수는 없다.
+
+      // 확장자 떼어오기
+      const ext = fileName.split('.')[1];
+      console.log('ext >', ext)
+
+      const newFile = new File([file], `${userId}.${ext}`, {
+        type: file.type
+      });
+
+      console.log('newFile >', newFile);
+
+      formData.append('profile', newFile); // 파일 객체
+      formData.append('id', form.id.value); */
+
+      // multer 세부 설정에서 req.body를 쓰고 싶다면, 파일을 맨 마지막에 append
+      // 파일 순서가 중요 > file을 맨 나중에
+      // 파일 순서에 따라 (서버) req.body 들어가지 않을 수 있다.
+      formData.append('id', userId);
+      formData.append('profile', file); // 파일 객체
+
+      axios({
+        method: 'post',
+        url: '/upload/practice2',
+        data: formData,
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      }).then((res) => {
+        console.log(res.data);
+      })
+    }
+  </script>
+</body>
+
+</html>

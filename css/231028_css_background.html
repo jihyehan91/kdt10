@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>background</title>
+    <style>
+      div {
+        background-color: orange;
+        width: 500px;
+        width: 800px;
+        height: 500px;
+      }
+      .background-img {
+        background-image: url('https://item.kakaocdn.net/do/d84248170c2c52303db27306a00fb861f604e7b0e6900f9ac53a43965300eb9a');
+
+        /* 1. background-repeat */
+        background-repeat: repeat; /* default */
+        background-repeat: repeat-x;
+        background-repeat: repeat-y;
+        background-repeat: no-repeat;
+
+        /* background-position */
+        background-position: left;
+        background-position: left top;
+        background-position: center;
+        /*background-position: 10px 100px;*/
+        /*background-position: 100px;*/
+
+        /* background-size */
+        background-size: auto; /* default */
+        background-size: 100px;
+        background-size: 100px 50px;
+        background-size: cover; /* 이미지 크기를 긴 축에 맞춤 */
+        background-size: contain; /* 이미지 크기를 짧은 축에 맞춤 */
+      }
+      /* background-attachment */
+      .background-attach {
+        width: 300px;
+        height: 300px;
+        overflow: scroll;
+        background-image: url('https://item.kakaocdn.net/do/d84248170c2c52303db27306a00fb861f604e7b0e6900f9ac53a43965300eb9a');
+        background-attachment: local;
+        background-attachment: scroll;
+        /* viewport 기준 */
+        background-attachment: fixed;
+      }
+    </style>
+  </head>
+  <body style="height: 10000px">
+    <div class="background-img"></div>
+    <div class="background-attach">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam
+      accusantium fugiat voluptates aut laudantium, blanditiis saepe unde
+      asperiores, nihil sequi deserunt. Possimus illo cupiditate libero quos
+      culpa autem necessitatibus vitae? Officiis, asperiores nemo natus
+      laudantium voluptatum quaerat voluptate quos, est excepturi, fuga mollitia
+      facilis? Odit modi, facilis ipsa sequi aliquid vel. Optio aliquam veniam
+      impedit assumenda, eveniet cumque autem ad? Asperiores a quisquam atque
+      possimus debitis. Similique sed nobis nesciunt quis amet commodi minima
+      dolores aperiam et asperiores. Veritatis ea esse suscipit minus aliquam ut
+      impedit obcaecati voluptates qui vero? Ipsa quas esse nam nulla ad
+      accusamus vero recusandae, suscipit labore iste, fugiat autem hic eius
+      sunt nihil saepe ut reiciendis? Eaque sint nobis praesentium deleniti
+      accusamus explicabo tenetur voluptatibus. Lorem ipsum dolor sit amet
+      consectetur adipisicing elit. Laboriosam accusantium fugiat voluptates aut
+      laudantium, blanditiis saepe unde asperiores, nihil sequi deserunt.
+      Possimus illo cupiditate libero quos culpa autem necessitatibus vitae?
+      Officiis, asperiores nemo natus laudantium voluptatum quaerat voluptate
+      quos, est excepturi, fuga mollitia facilis? Odit modi, facilis ipsa sequi
+      aliquid vel. Optio aliquam veniam impedit assumenda, eveniet cumque autem
+      ad? Asperiores a quisquam atque possimus debitis. Similique sed nobis
+      nesciunt quis amet commodi minima dolores aperiam et asperiores. Veritatis
+      ea esse suscipit minus aliquam ut impedit obcaecati voluptates qui vero?
+      Ipsa quas esse nam nulla ad accusamus vero recusandae, suscipit labore
+      iste, fugiat autem hic eius sunt nihil saepe ut reiciendis? Eaque sint
+      nobis praesentium deleniti accusamus explicabo tenetur voluptatibus.
+    </div>
+  </body>
+</html>

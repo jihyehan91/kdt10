@@ -1,0 +1,14 @@
+@mixin body($size) {
+  width: $size;
+  height: $size;
+}
+
+.larva {
+  position: relative;
+}
+
+.larva {
+  &.body {
+    @include body(100px);
+  }
+}

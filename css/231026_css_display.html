@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .inline {
+        background-color: yellow;
+        /*width: 100px; 인라인 요소에 사용 불가*/
+      }
+      .block {
+        background-color: orange;
+        width: 100px;
+      }
+      .inline-block {
+        display: inline-block;
+        background-color: red;
+        width: 100px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- inline & block -->
+    <span class="inline">Hello</span>
+    <span class="inline">world</span>
+
+    <div class="block"><div>Hello Block</div></div>
+    <span>span</span>
+    <div class="inline-block">world</div>
+    <!-- <span>
+      <div>span 태그에 block요소는 넣으면 안된다!</div>
+    </span> -->
+  </body>
+</html>

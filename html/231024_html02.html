@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- form 태그 -->
+    <form>
+      <!-- input 태그 -->
+      <input type="button" value="버튼" />
+      <input type="text" placeholder="ID" disabled value="ID값" />
+      <input type="password" placeholder="PW" />
+      <input type="checkbox" name="fruits" value="apple" checked />apple
+      <input type="checkbox" name="fruits" value="banana" /> 바나나
+      <input type="radio" name="gender" value="man" checked />남자
+      <input type="radio" name="gender" value="woman" />여자
+      <hr />
+      <input type="date" name="calender" />
+      <input type="datetime-local" name="calender" />
+      <select>
+        <optgroup label="커피">
+          <option value="americano">아메리카노</option>
+          <option value="latte" selected>카페라떼</option>
+          <option value="vanilla">바닐라라떼</option>
+        </optgroup>
+        <optgroup label="주스">
+          <option value="strawberry">딸기</option>
+          <option value="banana">바나나</option>
+          <option value="orange">오렌지</option>
+          <option value="not eating" disabled>안먹음</option>
+        </optgroup>
+      </select>
+    </form>
+
+    <hr />
+    <!-- table -->
+    <table border="1" cellspacing="0" cellpadding="10" width="300" height="100">
+      <tr>
+        <th>이름</th>
+        <th>나이</th>
+        <th>전화번호</th>
+      </tr>
+      <tr>
+        <td colspan="2">luna</td>
+        <td>100</td>
+      </tr>
+      <tr>
+        <td rowspan="2">luna</td>
+        <td>100</td>
+        <td>01012345678</td>
+      </tr>
+      <tr>
+        <td>100</td>
+        <td>01012345678</td>
+      </tr>
+    </table>
+  </body>
+</html>

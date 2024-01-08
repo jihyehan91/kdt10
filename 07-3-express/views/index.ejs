@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <%- include('./component/head', {title: 'Home'}) %>
+  </head>
+  <body>
+    <%- include('./component/header')%>
+    <h1>Hello EJS</h1>
+    <% for (let i =0; i < 5; i++){ %>
+    <div>hi~<%= i%>번째</div>
+    <%= i%> <% } %>
+
+    <!-- btns 버튼 -->
+    <% console.log(btns) %> 
+    <% for(let btn of btns) { %>
+    <button type="button" class="btn btn-info"><%= btn %></button>
+    <% } %>
+
+    <!-- isLogin -->
+    <% if(!isLogin) { %>
+    <h4>아직 로그인을 안했군요!</h4>
+    <% } else { %>
+    <h4>로그인 완료!</h4>
+    <div><%= me.name %></div>
+    <div><%= me.msg %></div>
+    <% } %>
+  </body>
+</html>

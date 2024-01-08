@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>회원가입</title>
+
+  <!-- axios cdn -->
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+  <h1>회원가입</h1>
+  <form name="form_register">
+    <label for="userid">ID</label>
+    <input type="text" id="userid" name="userid" required><br>
+    <label for="pw">Password</label>
+    <input type="password" id="pw" name="pw" required><br>
+    <label for="nmae">Name</label>
+    <input type="text" id="name" name="name"><br>
+    <button type="button" onclick="register()">Register</button>
+  </form>
+  <a href="/user/signin">Login</a>
+
+  <script>
+    function register() {
+      const form = document.forms['form_register'];
+
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+      }
+
+
+      axios({
+        method: 'POST',
+        url: '/user/signup',
+        data: {
+          userid: form.userid.value,
+          pw: form.pw.value,
+          name: form.name.value,
+        }
+      }).then((res) => {
+        console.log(res.data);
+
+        // alert 성공 메시지
+        alert('회원가입 성공!')
+        // 회원가입 성공 시 로그인 페이지로 이동
+        document.location.href = '/user/signin'; // user/signin get 메서드와 동일한 결과
+      })
+    }
+  </script>
+</body>
+
+</html>

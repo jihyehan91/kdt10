@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>실습 폼 전송 결과</title>
+  <style>
+    span {
+      color: coral;
+      font-weight: 700;
+    }
+  </style>
+</head>
+
+<body>
+  <div>
+    <span><%= userName %></span>님 환영합니다!
+  </div>
+  <div>
+    성별은 <span> <%= gender %></span>이군요!
+  </div>
+  <div>
+    생년월일은
+    <span><%= birthYear %>년</span>
+    <span><%= birthMonth %>월</span>
+    <span><%= birthDay %>일</span>
+    이군요!
+  </div>
+  <div>
+    취미는 <span> <%= hobby %></span>이군요!
+  </div>
+
+  <% if(myColor) { %>
+  <div>
+    좋아하는 색상: <span><%= myColor %></span>
+  </div>
+  <% } %>
+
+  <script>
+    const color = '<%= myColor %>';
+    console.log(color);
+  </script>
+</body>
+
+</html>

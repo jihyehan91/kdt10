@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      /* 1번 */
+      /* div {
+        height: 100px;
+      }
+      h3 {
+        width: fit-content;
+        color: white;
+        background-color: black;
+      }*/
+
+      /*2번*/
+      /* * {
+        color: white;
+      }
+      span {
+        background-color: red;
+      }
+      #first {
+        background-color: blue;
+      }
+      .second {
+        background-color: green;
+      }*/
+
+      /* 3번 */
+      p.lion {
+        background-color: red;
+      }
+      ul > .lion {
+        background-color: greenyellow;
+      }
+      #tiger {
+        background-color: yellow;
+      }
+      .lion {
+        color: sienna;
+      }
+      .zoo .lion {
+        font-weight: bold;
+      }
+      #tiger + li {
+        background-color: skyblue;
+      }
+      li.lion ~ li {
+        background-color: orange;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 1번 -->
+    <!-- <h3>무지개</h3>
+    <div style="width: 50px; height: 50px; background-color: red"></div>
+    <div style="width: 100px; height: 50px; background: orange"></div>
+    <div style="width: 150px; height: 50px; background: yellow"></div>
+    <div style="width: 200px; height: 50px; background: green"></div>
+    <div style="width: 250px; height: 50px; background: blue"></div>
+    <div style="width: 300px; height: 50px; background: navy"></div>
+    <div style="width: 350px; height: 50px; background: purple"></div> -->
+
+    <!-- 2번 -->
+    <!-- <h1>기본 선택자 연습해보기</h1>
+    <p>기본선택자 연습을 해보아요!</p>
+    <span>안녕하세요</span>
+    <ol>
+      <li id="first">1</li>
+      <li class="second">2</li>
+      <li>3</li>
+      <li>4</li>
+      <li>5</li>
+    </ol> -->
+
+    <!-- 3번 -->
+    <h1>복합선택자 사용 연습</h1>
+    <p>동물원에 왔어요</p>
+    <div class="zoo">
+      <ul>
+        <!-- ul안 span 태그 사용 불가. 연습용 -->
+        <span>여긴 사파리!</span>
+        <li>곰</li>
+        <li id="tiger">호랑이</li>
+        <li>팬더</li>
+        <span class="lion">사자1</span>
+        <li class="lion">사자2</li>
+        <li>사육사 sarah</li>
+        <li>사육사 세령</li>
+      </ul>
+      <span class="lion">사파리 밖의 사자</span>
+    </div>
+    <p class="lion">야생의 사자</p>
+  </body>
+</html>

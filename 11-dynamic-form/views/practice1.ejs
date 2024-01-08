@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- axios cdn -->
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <title>실습1. axios get 회원가입</title>
+  <style>
+    div.result {
+      font-size: 24px;
+      font-weight: 700;
+    }
+  </style>
+</head>
+
+<body>
+  <form name="register">
+    <label for="name">이름</label>
+    <input type="text" name="name">
+    <fieldset>
+      <legend>성별</legend>
+      <input type="radio" name="gender" id="male" value="male">남자
+      <input type="radio" name="gender" id="female" value="female">여자
+    </fieldset>
+    <fieldset>
+      <legend>생년월일</legend>
+      <select name="birthYear" id="year">
+        <% for(let i = 0; i < 50; i++) { %>
+        <option value="<%= 2010 - i %>"><%= 2010 - i  %></option>
+        <% } %>
+      </select>
+      <label for="year">년</label>
+      <select name="birthMonth" id="month">
+        <% for(let i =1; i <= 12; i++) { %>
+        <option value="<%= i %>"><%= i %></option>
+        <% } %>
+      </select>
+      <label for="month">월</label>
+      <select name="birthDay" id="day">
+        <% for(let i =1; i <= 31; i++) { %>
+        <option value="<%= i %>"><%= i %></option>
+        <% } %>
+      </select>
+      <label for="day">일</label>
+    </fieldset>
+    <fieldset>
+      <legend>관심사</legend>
+      <input type="checkbox" name="hobby" id="travel" value="travel">
+      <label for="travel">여행</label>
+      <input type="checkbox" name="hobby" id="fashion" value="fashion">
+      <label for="fashion">패션</label>
+      <input type="checkbox" name="hobby" id="food" value="food">
+      <label for="food">음식</label>
+    </fieldset>
+  </form>
+  <br>
+  <button type="button" onclick="clickRegister();">회원가입</button>
+
+  <div class="result"></div>
+
+  <script>
+    const resultBox = document.querySelector('.result');
+
+    function clickRegister() {
+      const form = document.forms['register'];
+      console.log(form.hobby.value); // value라는 속성에 접근 X -> Nodlist 형태로 반환 
+      console.log(form.name.value); // value라는 속성에 접근 O -> 하나의 요소로 반환 
+
+      // hobby checkbox 정보 출력하고 싶은 경우, 다음과 같이 새로운 배열로 정의
+      // case1. forEach 반복문 사용
+      /*const hobbies = [];
+      form.hobby.forEach((elem) => {
+        if (elem.checked) { // 체크가 되어 있으면 true 반환
+          hobbies.push(elem.value); // 체크된 항목의 값을 넣어주기.
+        }
+      })*/
+
+      // case2. filter, map 반복문 사용
+      // Array.from(arrayLike): 유사 배열 객체를 배열로 변환해준다.
+      const hobbies = Array.from(form.hobby)
+        .filter((elem) => elem.checked === true)
+        .map((elem) => elem.value);
+
+      console.log('hobbies', hobbies);
+
+      const data = { // 서버에 넘길 데이터값
+        name: form.name.value,
+        gender: form.gender.value,
+        birthYear: form.birthYear.value,
+        birthMonth: form.birthMonth.value,
+        birthDay: form.birthDay.value,
+        hobby: hobbies
+      }
+
+      console.log('data >', data);
+
+      axios({
+        method: 'get',
+        url: '/axios1',
+        params: data
+      }).then((response) => {
+        console.log(response.data)
+        const {
+          name,
+          gender,
+          birthYear,
+          birthMonth,
+          birthDay,
+          hobby
+        } = response.data;
+        resultBox.textContent = `${name}님 환영합니다! 가입 완료! 생년월일은 ${birthYear}년 ${birthMonth}월 ${birthDay}일! 취미는 ${hobby}`;
+      }).catch((error) => {
+        console.log('Error!', error)
+        resultBox.textContent = `요청 실패! ${error.response.data}`;
+      })
+
+    }
+  </script>
+</body>
+
+</html>
