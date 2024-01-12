@@ -7,8 +7,12 @@
   position: relative;
 }
 
-.larva {
-  &.body {
-    @include body(100px);
-  }
+.body {
+  @include body(100px);
+  border-radius: 50%;
+  background-color: red;
+}
+
+img {
+  width: 450px;
 }

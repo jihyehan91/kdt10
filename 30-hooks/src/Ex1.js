@@ -5,7 +5,6 @@ function Ex1Form() {
     register,
     handleSubmit,
     formState: { errors },
-    watch,
   } = useForm();
 
   const onValid = (data) => {
@@ -20,11 +19,13 @@ function Ex1Form() {
           type='text'
           placeholder='name'
           {...register('name', {
-            required: '이름을 입력해주세요',
-            message: '이름은 필수 항목입니다.',
+            required: '이름을 필수 항목입니다.',
           })}
         />
-        {errors.name?.message}
+        {/* {errors.name?.message} */}
+        {errors.name && (
+          <div style={{ color: 'red' }}>{errors.name.message}</div>
+        )}
         <br />
         <label>나이</label>
         <input
@@ -33,12 +34,13 @@ function Ex1Form() {
           {...register('age', {
             validate: {
               number: (value) => {
-                return value > 0 || '0 이상의 숫자만 입력 가능합니다.';
+                return Number(value) > 0 || '0 이상의 숫자만 입력 가능합니다.';
               },
             },
           })}
         />
-        {errors.age?.message}
+        {/* {errors.age?.message} */}
+        {errors.age && <div style={{ color: 'red' }}>{errors.age.message}</div>}
         <br />
         <button>제출</button>
       </form>
